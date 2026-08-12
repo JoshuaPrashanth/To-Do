@@ -1,44 +1,45 @@
-# To-Do List
+# 📝 To-Do List
 
-A clean, responsive **React To-Do List application** for managing daily tasks with search, filtering, completion tracking, and task deletion.
+A clean, responsive **React To-Do List application** for managing daily tasks. The app provides task creation, search, filtering, completion tracking, deletion, and task statistics through a simple and responsive interface.
 
 ## 🚀 Live Demo
 
 **Try the application:**
+
 https://joshuaprashanth.github.io/To-Do/
 
 ## 📸 Screenshot
 
-![To-Do List Screenshot](public/to-do-screenshot.png)
+Add a screenshot named `screenshot.png` to the project root to display it here:
 
-> **Note:** Add your application screenshot to the project root and name it `screenshot.png`. The image will then appear automatically in this README.
+![To-Do List Screenshot](screenshot.png)
 
 ## ✨ Features
 
-- ✅ Add new tasks
-- 🔍 Search tasks
+- ➕ Add new tasks
+- 🔍 Search tasks by title
 - ✔️ Mark tasks as completed
 - 🗑️ Delete tasks
 - 📋 View all tasks
 - ✅ Filter completed tasks
 - ⏳ Filter pending tasks
-- 📊 Display total, pending, and completed task counts
-- 🔄 Restore the original task list after searching
-- 📱 Fully responsive design
-- 💻 Optimized for desktop, tablet, and mobile screens
+- 📊 View total, pending, and completed task counts
+- 🔄 Clear the current search
+- ⌨️ Press Enter to search or add a task
+- 📱 Responsive layout for different screen sizes
 - 🎨 Clean and minimal user interface
-- ⚡ Fast and lightweight React application
+- ⚡ Lightweight React application
 
 ## 🛠️ Tech Stack
 
-| Technology            | Purpose                       |
-| --------------------- | ----------------------------- |
-| **React.js**          | Building the user interface   |
-| **JavaScript (ES6+)** | Application logic             |
-| **CSS3**              | Styling and responsive design |
-| **Lucide React**      | UI icons                      |
-| **Vite**              | Development and build tooling |
-| **GitHub Pages**      | Deployment                    |
+| Technology            | Purpose                                |
+| --------------------- | -------------------------------------- |
+| **React.js**          | Building the user interface            |
+| **JavaScript (ES6+)** | Application logic and state management |
+| **CSS3**              | Styling and responsive design          |
+| **Lucide React**      | Interface icons                        |
+| **Vite**              | Development and build tooling          |
+| **GitHub Pages**      | Application deployment                 |
 
 ## 📂 Project Structure
 
@@ -59,7 +60,7 @@ To-Do/
 └── README.md
 ```
 
-> The exact structure may vary depending on how the project is organized locally.
+> The exact structure may vary depending on the local project setup.
 
 ## ⚙️ Getting Started
 
@@ -69,7 +70,7 @@ To-Do/
 git clone https://github.com/joshuaprashanth/To-Do.git
 ```
 
-### 2. Navigate to the project
+### 2. Navigate to the project directory
 
 ```bash
 cd To-Do
@@ -87,7 +88,7 @@ npm install
 npm run dev
 ```
 
-The application will be available at the local development URL provided by Vite, typically:
+Vite will provide a local development URL, typically:
 
 ```text
 http://localhost:5173
@@ -95,67 +96,63 @@ http://localhost:5173
 
 ## 🔎 How It Works
 
-### Add a Task
+### ➕ Add a Task
 
-Click **Add Task**, enter the task name, and submit it. The new task is added to the task list.
+Click **Add Task**, enter a task name, and click **Submit**. The task is added to the list with a pending status.
 
-### Search Tasks
+Empty task names are ignored.
 
-Enter a keyword into the search field and click the search icon. The application displays tasks matching the entered text.
+### 🔍 Search Tasks
 
-### Complete a Task
+Enter a keyword into the search field and click the search icon, or press **Enter**.
 
-Click the check icon next to a task to mark it as completed.
+The application displays tasks whose titles contain the entered keyword.
 
-### Delete a Task
+### ✔️ Complete a Task
 
-Click the trash icon to remove a task from the list.
+Click the **check icon** next to a task to change its completion status.
 
-### Filter Tasks
+Completed tasks can also be changed back to pending.
 
-Use the filter buttons to switch between:
+### 🗑️ Delete a Task
 
-- **All** — Displays every task
-- **Completed** — Displays completed tasks
-- **Pending** — Displays unfinished tasks
+Click the **trash icon** next to a task to remove it from the list.
 
-### Task Statistics
+### 📋 Filter Tasks
 
-The bottom status bar provides an overview of:
+Use the filter buttons to control which tasks are displayed:
 
-- Total tasks
-- Pending tasks
-- Completed tasks
+- **All** — Displays all tasks
+- **Completed** — Displays only completed tasks
+- **Pending** — Displays only unfinished tasks
 
-## 📱 Responsive Design
+Search and filtering work together, so you can search within a specific task category.
 
-The application is designed to work across different screen sizes:
+### 📊 Task Statistics
 
-- 📱 Mobile devices
-- 📲 Tablets
-- 💻 Laptops
-- 🖥️ Desktop monitors
+The status section displays:
 
-CSS media queries adapt the layout, spacing, typography, and task components based on the available screen width.
+- **Total Tasks** — Number of tasks currently in the list
+- **Pending** — Number of unfinished tasks
+- **Completed** — Number of completed tasks
 
-## 🎯 Key React Concepts Used
+## ⚛️ React Concepts Demonstrated
 
-This project demonstrates several fundamental React concepts:
+This project demonstrates several fundamental React and JavaScript concepts.
 
 ### State Management
 
-`useState` is used to manage:
+React's `useState` hook manages application state including:
 
-- Tasks
+- Task data
 - Search input
 - Current filter
-- Add-task modal visibility
-- Search refresh state
-- Original task data
+- Add-task form visibility
+- Search/refresh state
 
 ### Array Methods
 
-The application uses JavaScript array methods such as:
+JavaScript array methods are used extensively for task operations:
 
 ```javascript
 map();
@@ -163,15 +160,21 @@ filter();
 includes();
 ```
 
-These are used for updating, searching, deleting, and filtering tasks.
+These methods are used to:
+
+- Update task completion status
+- Delete tasks
+- Search tasks
+- Filter tasks
+- Calculate task statistics
 
 ### Conditional Rendering
 
-Components such as the add-task form and refresh control are rendered conditionally based on application state.
+React conditional rendering is used for components such as the **Add Task** form and **Refresh** control.
 
 ### Component-Based Architecture
 
-The application separates functionality into reusable React components such as:
+The application separates functionality into reusable components:
 
 ```text
 ToDo
@@ -179,21 +182,34 @@ ToDo
 └── Refresh
 ```
 
-## 🚀 Deployment
+This keeps the main component organized while separating individual responsibilities.
 
-The application is deployed using **GitHub Pages**.
+## 📱 Responsive Design
 
-### Production Build
+The application is designed to provide a consistent experience across:
+
+- 📱 Mobile devices
+- 📲 Tablets
+- 💻 Laptops
+- 🖥️ Desktop monitors
+
+CSS media queries are used to adapt the layout, spacing, typography, and task components to different screen sizes.
+
+## 🚀 Build for Production
+
+Create an optimized production build with:
 
 ```bash
 npm run build
 ```
 
-After building the project, the generated production files can be deployed to GitHub Pages.
+The production files will be generated in the `dist` directory.
+
+You can then deploy the build to GitHub Pages using the project's configured deployment workflow.
 
 ## 🔮 Future Improvements
 
-Potential improvements for future versions include:
+Possible improvements for future versions include:
 
 - [ ] Persist tasks using `localStorage`
 - [ ] Edit existing tasks
@@ -202,7 +218,7 @@ Potential improvements for future versions include:
 - [ ] Add task categories
 - [ ] Add dark mode
 - [ ] Add drag-and-drop task ordering
-- [ ] Add animations for adding and deleting tasks
+- [ ] Add task animations
 - [ ] Add backend/database persistence
 - [ ] Add user authentication
 
@@ -210,7 +226,7 @@ Potential improvements for future versions include:
 
 **Joshua Prashanth**
 
-This project was built as a practical React application to demonstrate frontend development, state management, responsive UI design, and JavaScript fundamentals.
+This project was created as a practical React application to demonstrate frontend development, component-based architecture, state management, responsive UI design, and JavaScript fundamentals.
 
 ## 🌐 Project Links
 
