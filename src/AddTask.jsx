@@ -4,12 +4,28 @@ function AddTask({ setShowAddTask, setTasks }) {
   const [taskname, setTaskName] = useState("");
 
   function submitTask() {
+    const trimmedTask = taskname.trim();
+
+    if (!trimmedTask) {
+      return;
+    }
+
     setTasks((prevTasks) => {
+      const newId =
+        prevTasks.length > 0
+          ? Math.max(...prevTasks.map((task) => task.id)) + 1
+          : 1;
+
       return [
         ...prevTasks,
-        { id: prevTasks.length + 1, title: taskname.trim(), completed: false },
+        {
+          id: newId,
+          title: trimmedTask,
+          completed: false,
+        },
       ];
     });
+
     setTaskName("");
     setShowAddTask(false);
   }
@@ -26,7 +42,13 @@ function AddTask({ setShowAddTask, setTasks }) {
         onChange={(e) => {
           setTaskName(e.target.value);
         }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            submitTask();
+          }
+        }}
       />
+
       <button
         className="add-task-button submit-button"
         onClick={() => submitTask()}
@@ -36,4 +58,5 @@ function AddTask({ setShowAddTask, setTasks }) {
     </div>
   );
 }
+
 export default AddTask;
