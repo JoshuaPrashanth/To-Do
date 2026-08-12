@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AddTask from "./AddTask";
 import Refresh from "./Refresh";
+import { Check, Search, Trash } from "lucide-react";
 
 function ToDo() {
   const [searchTask, setSearchTask] = useState("");
@@ -76,18 +77,19 @@ function ToDo() {
     <div className="main-container">
       <h1>To-Do List</h1>
 
-      <input
-        type="text"
-        placeholder="Search for task..."
-        value={searchTask}
-        onChange={(e) => {
-          setSearchTask(e.target.value);
-        }}
-      />
+      <div className="search-container">
+        <input
+          className="search-bar"
+          type="text"
+          placeholder="Search for task..."
+          value={searchTask}
+          onChange={(e) => {
+            setSearchTask(e.target.value);
+          }}
+        />
+        <Search className="search-icon" onClick={() => search()} />
+      </div>
 
-      <button className="search-button" onClick={() => search()}>
-        Search
-      </button>
       {refresh && (
         <Refresh
           setRefresh={setRefresh}
@@ -95,8 +97,6 @@ function ToDo() {
           original={originalTasks}
         />
       )}
-      <br />
-      <br />
 
       <button
         className="add-task-button"
@@ -113,24 +113,37 @@ function ToDo() {
           originalTasks={tasks}
         />
       )}
-      <label htmlFor="sort">
-        Filter
-        <select
-          name="sort"
-          id="sort"
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)}
-        >
-          {" "}
-          <option value="all">All</option>
-          <option value="completed">Completed</option>
-          <option value="pending">Pending</option>
-        </select>
-      </label>
 
-      <p className="total-count">Total: {tasks.length}</p>
-      <p className="pending-count">Pending: {pending_count.length}</p>
-      <p className="completed-count">Completed: {completed_count.length}</p>
+      <div className="filter-container">
+        <button
+          id="all"
+          className={`filter-buttons ${filter === "all" ? "active" : ""}`}
+          onClick={() => {
+            setFilter("all");
+          }}
+        >
+          All
+        </button>
+        <button
+          id="completed"
+          className={`filter-buttons ${filter === "completed" ? "active" : ""}`}
+          onClick={() => {
+            setFilter("completed");
+          }}
+        >
+          Completed
+        </button>
+        <button
+          id="pending"
+          className={`filter-buttons ${filter === "pending" ? "active" : ""}`}
+          onClick={() => {
+            setFilter("pending");
+          }}
+        >
+          Pending
+        </button>
+      </div>
+
       <main>
         {displayedTasks.map((task) => {
           return (
@@ -138,19 +151,34 @@ function ToDo() {
               <p className="task-name">
                 <b>{task.title}</b>
               </p>
-              <button className="mark-button" onClick={() => markTask(task.id)}>
-                {task.completed ? "Marked" : "Mark"}
-              </button>
-              <button
-                className="delete-button"
-                onClick={() => deleteTask(task.id)}
-              >
-                Delete
-              </button>
+              <div className="action-buttons">
+                <Check
+                  className={`check-icon ${task.completed ? "active" : ""}`}
+                  onClick={() => markTask(task.id)}
+                />
+
+                <Trash
+                  className="trash-icon"
+                  onClick={() => deleteTask(task.id)}
+                />
+              </div>
             </div>
           );
         })}
       </main>
+
+      <div className="status-container">
+        <p className="total-count status-box">
+          Total Tasks: <br /> {tasks.length}
+        </p>
+        <p className="pending-count status-box">
+          {pending_count.length} <br />
+          Pending
+        </p>
+        <p className="completed-count status-box">
+          {completed_count.length} <br /> Completed
+        </p>
+      </div>
     </div>
   );
 }

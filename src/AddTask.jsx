@@ -16,9 +16,10 @@ function AddTask({ setShowAddTask, setTasks }) {
 
   return (
     <div className="add-task-container">
-      <h5>Add Task</h5>
+      <h3>Add Task</h3>
 
       <input
+        className="input-task"
         type="text"
         placeholder="Enter Task...."
         value={taskname}
@@ -26,7 +27,10 @@ function AddTask({ setShowAddTask, setTasks }) {
           setTaskName(e.target.value);
         }}
       />
-      <button className="submit-button" onClick={() => submitTask()}>
+      <button
+        className="add-task-button submit-button"
+        onClick={() => submitTask()}
+      >
         submit
       </button>
     </div>

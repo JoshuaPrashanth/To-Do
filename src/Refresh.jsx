@@ -3,6 +3,10 @@ function Refresh({ setRefresh, setTasks, original }) {
     console.log(original);
     setRefresh(false);
   }
-  return <button onClick={() => refreshTasks()}>Refresh</button>;
+  return (
+    <button className="add-task-button" onClick={() => refreshTasks()}>
+      Refresh
+    </button>
+  );
 }
 export default Refresh;
