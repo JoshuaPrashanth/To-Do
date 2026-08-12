@@ -20,7 +20,7 @@ h1 {
   font-weight: 800;
 }
 .search-container {
-  background-color: rgb(226, 226, 226);
+  background-color: rgb(242, 242, 242);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,7 +75,7 @@ h1 {
   cursor: pointer;
 }
 .filter-buttons.active {
-  background-color: rgb(226, 226, 226);
+  background-color: rgb(242, 242, 242);
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.147);
 }
 .task-container {
